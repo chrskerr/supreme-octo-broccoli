@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login, except: [:index, :show, :search]
+  before_action :check_for_login, only: [:create, :update, :destroy]
 
   def index
     @flights = Flight.all

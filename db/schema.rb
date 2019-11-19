@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 2019_11_19_035431) do
   end
 
   create_table "reservations", force: :cascade do |t|
+    t.text "code"
+    t.text "seat"
     t.integer "flight_id"
     t.integer "user_id"
-    t.text "seat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
