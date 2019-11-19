@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <nav>
+      <% if @current_user.nil? %>
+        <%= link_to 'Log in', login_path, :class => 'nav-item mr-1 btn btn-outline-light' %>
+        <%= link_to 'New Account', new_user_path, :class => 'nav-item mr-1 btn btn-outline-light' %>
+      <% else %>
+        <%= link_to 'Log out', root_path, :method => 'delete', :class => 'nav-item mr-1 btn btn-outline-light' %>
+      <% end %>
+    </nav>
+    <nav>
+      <% if @current_user.present? %>
+        <h4>Hello <%= @current_user.name %></h4>
+      <% end %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,16 @@
+<h1>Login</h1>
+
+
+<% unless flash[:error].nil? %> 
+    <p><%= flash[:error] %></p>
+<% end %>
+
+<%= form_tag login_path do %> 
+    <div>
+        <%= label_tag :email %>
+        <%= email_field_tag :email %>
+    </div> 
+    <div>
+        <%= submit_tag 'Login'%>
+    </div> 
+<% end %> 
