@@ -1,6 +1,20 @@
 <h1>Editing Flight</h1>
 
-<%= render 'form', flight: @flight %>
+<%= form_for @flight do | f | %>
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+    <%= f.label :origin %>
+    <%= f.text_field :origin %>
+    <%= f.label :destination %>
+    <%= f.text_field :destination %>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+    <%= f.label :plane_id %>
+    <%= f.select :plane_id, Plane.all.pluck(:name, :id) %>     
+    
+
+    <%= f.submit %>
+<% end %>
 
 <%= link_to 'Show', @flight %> |
 <%= link_to 'Back', flights_path %>

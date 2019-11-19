@@ -1,30 +1,21 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login, except: [:show]
+  before_action :check_for_login, except: [:index, :show, :search]
 
-
-  # GET /flights
-  # GET /flights.json
   def index
     @flights = Flight.all
   end
 
-  # GET /flights/1
-  # GET /flights/1.json
   def show
   end
 
-  # GET /flights/new
   def new
     @flight = Flight.new
   end
 
-  # GET /flights/1/edit
   def edit
   end
 
-  # POST /flights
-  # POST /flights.json
   def create
     @flight = Flight.new(flight_params)
 
@@ -39,8 +30,7 @@ class FlightsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /flights/1
-  # PATCH/PUT /flights/1.json
+
   def update
     respond_to do |format|
       if @flight.update(flight_params)
@@ -53,8 +43,6 @@ class FlightsController < ApplicationController
     end
   end
 
-  # DELETE /flights/1
-  # DELETE /flights/1.json
   def destroy
     @flight.destroy
     respond_to do |format|
@@ -63,13 +51,26 @@ class FlightsController < ApplicationController
     end
   end
 
+  def search
+    if params[:destination]
+      @flights = Flight.where(:origin => params[:origin].capitalize, :destination => params[:destination].capitalize)
+    else
+      @flights = Flight.where(:origin => params[:origin].capitalize)
+    end
+  end
+
+  def cities
+    city_arr = Flight.all.pluck(:origin, :destination).flatten.uniq
+    @cities = {
+      cities: city_arr
+    }
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_flight
       @flight = Flight.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def flight_params
       params.require(:flight).permit(:number, :origin, :destination, :date, :plane_id)
     end

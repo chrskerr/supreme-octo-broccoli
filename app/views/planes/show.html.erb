@@ -15,5 +15,14 @@
   <%= @plane.column %>
 </p>
 
+<p>
+  <strong>Flights:</strong>
+  <ul>
+    <% @plane.flights.each do | flight | %>
+      <li><%= link_to flight.number, flight_path(flight.id) %></li>
+    <% end %>
+</ul>
+</p>
+
 <%= link_to 'Edit', edit_plane_path(@plane) %> |
 <%= link_to 'Back', planes_path %>

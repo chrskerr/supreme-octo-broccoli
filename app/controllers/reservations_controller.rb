@@ -1,12 +1,17 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login, except: [:show]
+  before_action :check_for_login, except: [:index]
+  skip_before_action :verify_authenticity_token
 
 
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    if @current_user.admin == true
+      @reservations = Reservation.all
+    else
+      @reservations = Reservation.where(:id => @current_user.id)
+    end
   end
 
   # GET /reservations/1

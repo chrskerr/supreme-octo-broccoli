@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-
 u1 = User.create :name => 'Admin', :email => 'admin@ga.com', :admin => true
 u2 = User.create :name => 'Chris', :email => 'chris@ga.com'
+
+Plane.destroy_all
+p1 = Plane.create :name => 'Burning1', :row => 26, :column => 6
+p1 = Plane.create :name => 'Burning2', :row => 26, :column => 6
+p1 = Plane.create :name => 'Burning3', :row => 48, :column => 8
+p1 = Plane.create :name => 'Burning4', :row => 48, :column => 8
+p1 = Plane.create :name => 'Burning5', :row => 60, :column => 8

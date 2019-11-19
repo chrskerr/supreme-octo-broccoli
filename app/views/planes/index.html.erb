@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Row</th>
-      <th>Column</th>
+      <th>Rows</th>
+      <th>Seats p/row</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
   <tbody>
     <% @planes.each do |plane| %>
       <tr>
-        <td><%= plane.name %></td>
+        <td><%= link_to plane.name, plane_path(plane.id) %></td>
         <td><%= plane.row %></td>
         <td><%= plane.column %></td>
         <td><%= link_to 'Show', plane %></td>

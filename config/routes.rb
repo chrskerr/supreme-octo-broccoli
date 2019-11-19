@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users
   resources :planes
 
+  get '/cities' => 'flights#cities'
+  get '/:origin/:destination' => 'flights#search'
+  get '/:origin' => 'flights#search'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/' => 'session#destroy'

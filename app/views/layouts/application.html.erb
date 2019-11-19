@@ -11,6 +11,10 @@
 
   <body>
     <nav>
+      <h4>User Portal</h4>
+      <%= link_to 'Reservations', reservations_path %>
+      <%= link_to 'Flights', flights_path %>
+      <%= link_to 'Planes', planes_path %>
       <% if @current_user.nil? %>
         <%= link_to 'Log in', login_path, :class => 'nav-item mr-1 btn btn-outline-light' %>
         <%= link_to 'New Account', new_user_path, :class => 'nav-item mr-1 btn btn-outline-light' %>
