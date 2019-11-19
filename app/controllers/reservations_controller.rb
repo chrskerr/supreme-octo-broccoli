@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login, except: [:index]
+  before_action :check_for_login
+  before_action :check_for_admin, only: [:new, :edit, :create, :update]
   skip_before_action :verify_authenticity_token
 
 

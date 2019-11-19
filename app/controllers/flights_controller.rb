@@ -60,10 +60,7 @@ class FlightsController < ApplicationController
   end
 
   def cities
-    city_arr = Flight.all.pluck(:origin, :destination).flatten.uniq
-    @cities = {
-      cities: city_arr
-    }
+    @cities = Flight.all.pluck(:origin, :destination).flatten.uniq
   end
 
   private

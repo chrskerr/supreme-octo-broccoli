@@ -16,4 +16,5 @@
 </p>
 
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Destroy', @reservation, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', reservations_path %>

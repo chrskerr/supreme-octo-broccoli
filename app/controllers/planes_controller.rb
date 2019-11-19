@@ -1,6 +1,6 @@
 class PlanesController < ApplicationController
   before_action :set_plane, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login, except: [:show]
+  before_action :check_for_login, except: [:index, :show]
 
 
   # GET /planes

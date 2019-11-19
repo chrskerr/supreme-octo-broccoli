@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     def check_for_login
         redirect_to login_path unless @current_user.present? #allows controller functions to check if a user is logged in, ie attempting to go to the create folder page without being logged in. Add as 'before_action :check for login' in any controller that should only be logged in to use
     end
+
+    def check_for_admin
+        redirect_to root_path unless @current_user.present? && @current_user.admin
+    end
+
 end

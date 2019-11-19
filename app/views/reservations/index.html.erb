@@ -18,15 +18,12 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.flight_id %></td>
+        <td><%= link_to reservation.flight.number, reservation_path(flight.id) %></td>
         <td><%= reservation.flight.origin %></td>
         <td><%= reservation.flight.destination %></td>
         <td><%= reservation.flight.date %></td>
         <td><%= reservation.user.name %></td>
         <td><%= reservation.seat %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
