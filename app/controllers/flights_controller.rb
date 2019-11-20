@@ -7,9 +7,12 @@ class FlightsController < ApplicationController
 
   def show
     @flight = Flight.find(params[:id])
-    @taken_seats = @flight.reservations.pluck(:seat)
+    # @taken_seats = @flight.reservations.pluck(:seat)
+	@taken_seats = {}
+	@flight.reservations.each do | res |
+		@taken_seats.merge! Hash[res.seat, res.user.email]
+	end 
     @flight.taken_seats = @taken_seats
-    # raise 'hell'
   end
 
   def new
