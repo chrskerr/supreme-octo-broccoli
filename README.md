@@ -1,5 +1,18 @@
-# Burning Airlines Lab - Brief
 
+## [Heroku hosting of backend server](https://aleks-chris-burning-server.herokuapp.com/)
+
+## API formats
+- /cities
+  - provides a list of all cities that have a flight in/out 
+- /{origin}
+  - provides a list of all flights leaving that city, on any date
+- /{origin}/{destination}
+  - provides a list of all flights from origin to destination, on any date
+- /flights/{flight_id}
+  - provides details of that flight, including any taken seats
+
+
+# Burning Airlines Lab - Brief
 ![image](https://pbs.twimg.com/media/COeYbe1WUAABHQ1.jpg)
 
 
