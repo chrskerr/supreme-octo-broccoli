@@ -34,7 +34,7 @@
   <%= link_to @flight.plane.name, plane_path(@flight.plane.id) %>
 </p>
 
-<table>
+<table class='table'>
   <% row_count = 1 %>
   <% @flight.plane.row.to_i.times do %>
     <tr>
