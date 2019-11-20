@@ -2,7 +2,7 @@
 
 <h1>Reservations</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Flight</th>
@@ -18,12 +18,14 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to reservation.flight.number, reservation_path(flight.id) %></td>
+        <td><%= link_to reservation.flight.number, flight_path(reservation.flight.id) %></td>
         <td><%= reservation.flight.origin %></td>
         <td><%= reservation.flight.destination %></td>
         <td><%= reservation.flight.date %></td>
         <td><%= reservation.user.name %></td>
         <td><%= reservation.seat %></td>
+        <td><%= link_to 'Cancel ticket', @reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

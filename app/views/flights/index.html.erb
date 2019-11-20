@@ -2,7 +2,7 @@
 
 <h1>Flights</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Number</th>
@@ -10,6 +10,7 @@
       <th>Destination</th>
       <th>Date</th>
       <th>Plane</th>
+      <th>Seats taken</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= flight.destination %></td>
         <td><%= flight.date %></td>
         <td><%= flight.plane.name %></td>
+        <td><%= flight.reservations.count %></td>
       </tr>
     <% end %>
   </tbody>

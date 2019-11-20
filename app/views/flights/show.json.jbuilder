@@ -1,0 +1,1 @@
+json.data @flight, :id, :number, :origin, :destination, :date, :plane, :taken_seats

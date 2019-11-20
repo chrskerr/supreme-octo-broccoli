@@ -1,5 +1,4 @@
 class FlightsController < ApplicationController
-  before_action :set_flight, only: [:show, :edit, :update, :destroy]
   before_action :check_for_login, only: [:create, :update, :destroy]
 
   def index
@@ -7,6 +6,13 @@ class FlightsController < ApplicationController
   end
 
   def show
+    @flight = Flight.find(params[:id])
+    # @taken_seats = @flight.reservations.pluck(:seat)
+	@taken_seats = {}
+	@flight.reservations.each do | res |
+		@taken_seats.merge! Hash[res.seat, res.user.email]
+	end 
+    @flight.taken_seats = @taken_seats
   end
 
   def new
@@ -14,6 +20,7 @@ class FlightsController < ApplicationController
   end
 
   def edit
+    @flight = Flight.find(params[:id])
   end
 
   def create
@@ -32,6 +39,7 @@ class FlightsController < ApplicationController
 
 
   def update
+    @flight = Flight.find(params[:id])
     respond_to do |format|
       if @flight.update(flight_params)
         format.html { redirect_to @flight, notice: 'Flight was successfully updated.' }
@@ -44,6 +52,7 @@ class FlightsController < ApplicationController
   end
 
   def destroy
+    @flight = Flight.find(params[:id])
     @flight.destroy
     respond_to do |format|
       format.html { redirect_to flights_url, notice: 'Flight was successfully destroyed.' }
@@ -64,10 +73,6 @@ class FlightsController < ApplicationController
   end
 
   private
-    def set_flight
-      @flight = Flight.find(params[:id])
-    end
-
     def flight_params
       params.require(:flight).permit(:number, :origin, :destination, :date, :plane_id)
     end

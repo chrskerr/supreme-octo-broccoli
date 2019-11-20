@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
     if @current_user.admin == true
       @reservations = Reservation.all
     else
-      @reservations = Reservation.where(:id => @current_user.id)
+      @reservations = Reservation.where(:user_id => @current_user.id)
     end
   end
 
@@ -33,6 +33,15 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+
+    # code to validate user based on email given, and create a new one if none found
+    user = User.find_by(:email => params[:email]) 
+    if user.present?
+      @reservation.user_id = user.id
+    else 
+      user = User.create :email => params[:email]
+      @reservation.user_id = user.id
+    end
 
     respond_to do |format|
       if @reservation.save
@@ -77,6 +86,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:flight_id, :user_id, :seat)
+      params.require(:reservation).permit(:flight_id, :seat)
     end
 end
