@@ -43,23 +43,23 @@ Reservation.destroy_all
 r1 = Reservation.create :seat => '35C'
 r2 = Reservation.create :seat => '16F'
 r3 = Reservation.create :seat => '14A'
-# f1.reservations << r1 << r2 << r3
+f1.reservations << r1 << r2 << r3
 
 r4 = Reservation.create :seat => '35C'
 r5 = Reservation.create :seat => '16F'
 r6 = Reservation.create :seat => '14A'
-# f2.reservations << r4 << r5 << r6
+f2.reservations << r4 << r5 << r6
 
 r7 = Reservation.create :seat => '10A'
 r8 = Reservation.create :seat => '10B'
 r9 = Reservation.create :seat => '16F'
-# f3.reservations << r7 << r8 << r9
+f3.reservations << r7 << r8 << r9
 
 r10 = Reservation.create :seat => '10A'
 r11 = Reservation.create :seat => '10B'
 r12 = Reservation.create :seat => '16F'
-# f4.reservations << r10 << r11 << r12
+f4.reservations << r10 << r11 << r12
 
-# u3.reservations << r1 << r4 << r7 << r10
-# u4.reservations << r2 << r5 << r8 << r11
-# u5.reservations << r3 << r6 << r9 << r12
+u3.reservations << r1 << r4 << r7 << r10
+u4.reservations << r2 << r5 << r8 << r11
+u5.reservations << r3 << r6 << r9 << r12

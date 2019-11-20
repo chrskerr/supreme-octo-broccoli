@@ -2,7 +2,7 @@
 
 <p>
   <strong>Flight:</strong>
-  <%= @reservation.flight_id %>
+  <%= link_to @reservation.flight.number, flight_path(@reservation.flight.id) %>
 </p>
 
 <p>

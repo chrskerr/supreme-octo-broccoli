@@ -18,7 +18,7 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to reservation.flight.number, reservation_path(flight.id) %></td>
+        <td><%= link_to reservation.flight.number, reservation_path(reservation.flight.id) %></td>
         <td><%= reservation.flight.origin %></td>
         <td><%= reservation.flight.destination %></td>
         <td><%= reservation.flight.date %></td>

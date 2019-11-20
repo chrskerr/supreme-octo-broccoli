@@ -21,9 +21,38 @@
 </p>
 
 <p>
+  <strong>Booked Seats:</strong>
+  <ul>
+    <% @taken_seats.each do | seat | %>
+      <li><%= seat %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
   <strong>Plane:</strong>
   <%= link_to @flight.plane.name, plane_path(@flight.plane.id) %>
 </p>
+
+<table>
+  <% row_count = 1 %>
+  <% @flight.plane.row.to_i.times do %>
+    <tr>
+      <% cell_count = 1 %>
+      <% @flight.plane.column.to_i.times do %>
+        <% mapping = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] %>
+        <% row_count.to_s.length === 1 ? seat = 0.to_s + row_count.to_s + mapping[cell_count] : seat = row_count.to_s + mapping[cell_count] %>
+        <% if @taken_seats.include? seat %>
+          <td style='background: red'><%= seat %></td>
+        <% else %>
+          <td><%= seat %></td>
+        <% end %>
+        <% cell_count += 1 %>
+      <% end %>
+    </tr>
+    <% row_count += 1 %>
+  <% end %>
+</table>
 
 <%= link_to 'Edit', edit_flight_path(@flight) %> |
 <%= link_to 'Destroy', @fligth, method: :delete, data: { confirm: 'Are you sure?' } %> |
