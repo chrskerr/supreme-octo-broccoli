@@ -1,1 +1,1 @@
-json.export! @flight, :id, :number, :origin, :destination, :date, :plane, :taken_seats
+json.data @flight, :id, :number, :origin, :destination, :date, :plane, :taken_seats
