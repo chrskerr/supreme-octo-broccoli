@@ -39,19 +39,19 @@ class ReservationsController < ApplicationController
     if user.present?
       @reservation.user_id = user.id
     else 
-      user = User.create :email => params[:email]
+      user = User.create :email => params[:email], :name => params[:name]
       @reservation.user_id = user.id
     end
 
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render 'success' }
-      else
-        format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @reservation.save
+    #     format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+    #     format.json { render 'success' }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /reservations/1
