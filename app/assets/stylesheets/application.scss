@@ -20,3 +20,14 @@
  //
 
  @import "bootstrap";
+
+a:visited {
+    color: $primary;
+}
+
+ .btn-outline-light:visited{
+    color: $light;
+  }
+ .btn-outline-light:hover{
+    color: $dark;
+  }
