@@ -2,13 +2,13 @@
 ## [Heroku hosting of backend server](https://aleks-chris-burning-server.herokuapp.com/)
 
 ## API formats
-- /cities
+- /cities.json
   - provides a list of all cities that have a flight in/out 
-- /{origin}
+- /{origin}.json
   - provides a list of all flights leaving that city, on any date
-- /{origin}/{destination}
+- /{origin}/{destination}.json
   - provides a list of all flights from origin to destination, on any date
-- /flights/{flight_id}
+- /flights/{flight_id}.json
   - provides details of that flight, including any taken seats
 
 
