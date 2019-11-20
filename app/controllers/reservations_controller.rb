@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
     if @current_user.admin == true
       @reservations = Reservation.all
     else
-      @reservations = Reservation.where(:id => @current_user.id)
+      @reservations = Reservation.where(:user_id => @current_user.id)
     end
   end
 

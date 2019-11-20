@@ -34,25 +34,27 @@
   <%= link_to @flight.plane.name, plane_path(@flight.plane.id) %>
 </p>
 
-<table class='table'>
-  <% row_count = 1 %>
-  <% @flight.plane.row.to_i.times do %>
-    <tr>
-      <% cell_count = 1 %>
-      <% @flight.plane.column.to_i.times do %>
-        <% mapping = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] %>
-        <% row_count.to_s.length === 1 ? seat = 0.to_s + row_count.to_s + mapping[cell_count] : seat = row_count.to_s + mapping[cell_count] %>
-        <% if @taken_seats.include? seat %>
-          <td style='background: red'><%= seat %></td>
-        <% else %>
-          <td><%= seat %></td>
+<div class='container col-5'>
+  <table class='table'>
+    <% row_count = 1 %>
+    <% @flight.plane.row.to_i.times do %>
+      <tr>
+        <% cell_count = 1 %>
+        <% @flight.plane.column.to_i.times do %>
+          <% mapping = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] %>
+          <% row_count.to_s.length === 1 ? seat = 0.to_s + row_count.to_s + mapping[cell_count] : seat = row_count.to_s + mapping[cell_count] %>
+          <% if @taken_seats.include? seat %>
+            <td class='bg-primary text-center'><%= seat %></td>
+          <% else %>
+            <td class='text-center'><%= seat %></td>
+          <% end %>
+          <% cell_count += 1 %>
         <% end %>
-        <% cell_count += 1 %>
-      <% end %>
-    </tr>
-    <% row_count += 1 %>
-  <% end %>
-</table>
+      </tr>
+      <% row_count += 1 %>
+    <% end %>
+  </table>
+</div>
 
 <%= link_to 'Edit', edit_flight_path(@flight) %> |
 <%= link_to 'Destroy', @fligth, method: :delete, data: { confirm: 'Are you sure?' } %> |
