@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login
-  before_action :check_for_admin, only: [:new, :edit, :create, :update]
+  # before_action :check_for_login, except: [:create]
+  # before_action :check_for_admin, only: [:new, :edit, :create, :update]
   skip_before_action :verify_authenticity_token
 
 
@@ -46,7 +46,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render :show, status: :created, location: @reservation }
+        format.json { render 'success' }
       else
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }

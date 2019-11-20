@@ -3,5 +3,5 @@ class Plane < ApplicationRecord
 
     validates :name, :presence => true
     validates :row, :presence => true
-    validates :colum, :presence => true
+    validates :column, :presence => true
 end
