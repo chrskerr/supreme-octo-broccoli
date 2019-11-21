@@ -30,8 +30,13 @@
 </p>
 
 <p>
+
+  <strong><%= link_to 'Book A Seat', "https://chris-aleks-burning-client.herokuapp.com/#/flights/#{@flight.id}" %></strong>
+
+</p>
+
+<p>
   <strong>Plane:</strong>
-  <%= link_to @flight.plane.name, plane_path(@flight.plane.id) %>
 </p>
 
 <div class='container col-5'>
