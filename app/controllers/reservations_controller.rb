@@ -43,6 +43,8 @@ class ReservationsController < ApplicationController
       @reservation.user_id = user.id
     end
 
+    @reservation.save
+
     # respond_to do |format|
     #   if @reservation.save
     #     format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
