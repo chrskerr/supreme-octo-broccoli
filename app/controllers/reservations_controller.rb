@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-  before_action :check_for_login
-  before_action :check_for_admin, only: [:new, :edit, :create, :update]
+  # before_action :check_for_login, except: [:create]
+  # before_action :check_for_admin, only: [:new, :edit, :create, :update]
   skip_before_action :verify_authenticity_token
 
 
@@ -39,19 +39,21 @@ class ReservationsController < ApplicationController
     if user.present?
       @reservation.user_id = user.id
     else 
-      user = User.create :email => params[:email]
+      user = User.create :email => params[:email], :name => params[:name]
       @reservation.user_id = user.id
     end
 
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render :show, status: :created, location: @reservation }
-      else
-        format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    @reservation.save
+
+    # respond_to do |format|
+    #   if @reservation.save
+    #     format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+    #     format.json { render 'success' }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /reservations/1
@@ -77,6 +79,7 @@ class ReservationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
