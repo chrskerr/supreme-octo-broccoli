@@ -24,7 +24,7 @@
         <td><%= reservation.flight.date %></td>
         <td><%= reservation.user.name %></td>
         <td><%= reservation.seat %></td>
-        <td><%= link_to 'Cancel ticket', @reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel ticket', reservation_path(reservation.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
     <% end %>
