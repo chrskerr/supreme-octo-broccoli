@@ -24,7 +24,7 @@
   <strong>Booked Seats:</strong>
   <ul>
     <% @taken_seats.each do | seat | %>
-      <li><%= seat %></li>
+      <li>Seat <%= seat[0] %> by <%= seat[1] %></li>
     <% end %>
   </ul>
 </p>
