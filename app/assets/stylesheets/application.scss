@@ -14,10 +14,14 @@
  *= require_self
  */
 
- $primary: #CE2029;
+//  $primary: #CE2029;
 //  $secondary: #86919C;
  
  //
+
+ nav-link:hover {
+  background-color: blue;
+}
 
  @import "bootstrap";
 
@@ -25,9 +29,10 @@ a:visited {
     color: $primary;
 }
 
- .btn-outline-light:visited{
-    color: $light;
-  }
- .btn-outline-light:hover{
-    color: $dark;
-  }
+//  .btn-outline-light:visited{
+//     color: $light;
+//   }
+//  .btn-outline-light:hover{
+//     color: $dark;
+//   }
+
