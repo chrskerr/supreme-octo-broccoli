@@ -72,6 +72,10 @@ class FlightsController < ApplicationController
     @cities = Flight.all.pluck(:origin, :destination).flatten.uniq
   end
 
+  def destinations 
+    @destinations = Flight.where(:origin => params[:origin].capitalize).pluck(:destination)
+  end
+
   private
     def flight_params
       params.require(:flight).permit(:number, :origin, :destination, :date, :plane_id)

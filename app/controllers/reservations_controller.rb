@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    if @current_user && @current_user.admin
+    if @current_user.present? && @current_user.admin === true
       @reservations = Reservation.all
     else
       @reservations = Reservation.where(:user_id => @current_user.id)
